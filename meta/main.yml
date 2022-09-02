@@ -1,8 +1,8 @@
 ---
 galaxy_info:
-  role_name: ansible-role-postfix-opendkim
+  role_name: postfix-opendkim
   author: mcbrineellis
-  description: Ansible role to install a mail server
+  description: Ansible role to install and configure a Postfix mail server with the OpenDKIM milter.
   license: MIT
   min_ansible_version: "2.4"
 

@@ -1,0 +1,6 @@
+---
+- name: Install Postfix mail server
+  import_tasks: postfix.yml
+
+- name: Install OpenDKIM for mail signing
+  import_tasks: opendkim.yml

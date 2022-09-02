@@ -1,0 +1,31 @@
+- name: Install postfix and cyrus-sasl
+  ansible.builtin.package:
+    name:
+      - postfix
+      - cyrus-sasl
+      - cyrus-sasl-plain
+    state: present
+  become: true
+
+- name: Update postfix config
+  ansible.builtin.template:
+    src: templates/main.cf.j2
+    dest: /etc/postfix/main.cf
+  become: true
+
+- name: Enable smtp and smtp-submission services on firewalld
+  ansible.posix.firewalld:
+    service: "{{ item }}"
+    permanent: yes
+    immediate: yes
+    state: enabled
+  with_items:
+    - smtp
+    - smtp-submission
+  become: true
+
+- name: Create postfix mynetworks file
+  ansible.builtin.copy:
+    content: "{% for item in mynetworks %}{{ item + '\n'}}{% endfor %}"
+    dest: /etc/postfix/mynetworks
+  become: true

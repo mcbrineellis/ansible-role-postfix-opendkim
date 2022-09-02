@@ -8,7 +8,7 @@ Please ensure that the posix collection is installed:
 `ansible-galaxy collection install ansible.posix`
 
 ## Role Variables
-Make sure to set these variables when calling this playbook.
+Make sure to set these variables when using this role.
 
 ```
 my_domain: yourdomain.com
